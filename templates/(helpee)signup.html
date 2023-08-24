@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Help</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='(helpee)signup.css') }}">
+</head>
+<body>
+    <h1>Get Help</h1>
+
+    <div class="container">
+        <form method="post" action="/sign_up_helpee" autocomplete="on">
+            <!-- Student Information section -->
+            <label for="name">Student Name: {{ error }}</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="email">Student Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <div style="height: 20px;"></div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <div id="password-strength" class="password-strength"></div>
+
+            <div style="height: 20px;"></div>
+            <label for="cpassword">Confirm Password:</label>
+            <input type="password" id="cpassword" name="cpassword" required>
+            <div id="password-match" class="password-strength"></div>
+            <div style="height: 25px;"></div>
+
+            <div style="height: 20px;"></div>
+            <label for="gender">Gender:</label>
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female" required>
+            <label for="female">Female</label>
+            <input type="radio" id="other" name="gender" value="other" required>
+            <label for="other">Other</label><br>
+ 
+
+            <div style="height: 20px;"></div>
+
+            <label for="grade_level">Grade Level or Education Level:</label>
+            <select id="grade_level" name="grade_level" required>
+                <option value="">Select Grade Level</option>
+                <option value="elementary">Elementary</option>
+                <option value="middle">Middle School</option>
+                <option value="high">High School</option>
+                <option value="undergrad">Undergraduate</option>
+                <option value="graduate">Graduate</option>
+                <option value="other">Other</option>
+            </select><br>
+
+            <div style="height: 20px;"></div>
+            <label for="institute_name">Institute Name:</label>
+            <input type="text" id="institute_name" name="institute_name" required><br>
+            <div style="height: 20px;"></div>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required><br>
+
+
+            <div style="height: 20px;"></div>
+            <label for="unique_disability_id">Unique Disability ID:</label>
+            <input type="text" id="unique_disability_id" name="unique_disability_id" required><br>
+            <div style="height: 20px;"></div>
+            <label for="contact_number"> Contact Number:</label>
+            <input type="tel" id="contact_number" name="contact_number" required><br>
+
+            <div style="height: 20px;"></div>
+            <h2>Parent or Guardian Information (if applicable):</h2>
+            <div style="height: 25px;"></div>
+            <label for="parent_name">Parent or Guardian Name:</label>
+            <input type="text" id="parent_name" name="parent_name"><br>
+            <div style="height: 20px;"></div>
+            <label for="parent_contact_number"> Contact Number:</label>
+            <input type="tel" id="parent_contact_number" name="parent_contact_number"><br>
+
+            <input type="submit" value="Submit" id="submitButton" disabled>
+        </form>
+    </div>
+    <script>
+        function checkPasswordStrength() {
+            var password = document.getElementById('password').value;
+            var passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&])[A-Za-z\d!@#$%^&]{8,}$/;
+            var passwordStrengthElement = document.getElementById('password-strength');
+
+            if (!passwordPattern.test(password)) {
+                passwordStrengthElement.textContent = "Weak password (must be at least 8 characters long and contain one uppercase, one lowercase, one digit, and one special character)";
+                passwordStrengthElement.style.color = "#FF6347";
+            } else {
+                passwordStrengthElement.textContent = "Strong password";
+                passwordStrengthElement.style.color = "#70df6a";
+            }
+
+            checkConfirmPassword(); // Check password match when password changes
+        }
+
+        function checkConfirmPassword() {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('cpassword').value;
+            var passwordMatchElement = document.getElementById('password-match');
+            var submitButton = document.getElementById('submitButton');
+
+            if (password !== confirmPassword) {
+                passwordMatchElement.textContent = "Passwords do not match";
+                passwordMatchElement.style.color = "#FF6347";
+                submitButton.disabled = true; // Disable submit button
+            } else {
+                passwordMatchElement.textContent = "Passwords match";
+                passwordMatchElement.style.color = "#70df6a";
+                submitButton.disabled = false; // Enable submit button
+            }
+        }
+
+        document.getElementById('password').addEventListener('input', checkPasswordStrength);
+        document.getElementById('cpassword').addEventListener('input', checkConfirmPassword);
+
+        function showPopup() {
+            alert("Your request for help has been submitted.");
+        }
+        
+        function updateSubmitButtonStatus() {
+        var requiredFields = document.querySelectorAll('input[required], select[required]');
+        var submitButton = document.getElementById('submitButton');
+        var isFormValid = true;
+
+        // Check if all required fields are filled
+        for (var i = 0; i < requiredFields.length; i++) {
+            if (!requiredFields[i].value.trim()) {
+                isFormValid = false;
+                break;
+            }
+        }
+
+        // Disable or enable the submit button based on form validity
+        submitButton.disabled = !isFormValid;
+        submitButton.style.backgroundColor = isFormValid ? "#4caf50" : "#ccc"; // Change background color when enabled or disabled
+        submitButton.style.cursor = isFormValid ? "pointer" : "not-allowed"; // Change cursor when enabled or disabled
+    }
+
+    document.getElementById('password').addEventListener('input', checkPasswordStrength);
+    document.getElementById('cpassword').addEventListener('input', checkConfirmPassword);
+
+    // Add event listeners to all input and select elements to check form validity on any change
+    var inputElements = document.querySelectorAll('input, select');
+    for (var i = 0; i < inputElements.length; i++) {
+        inputElements[i].addEventListener('input', updateSubmitButtonStatus);
+    }
+
+    // Initially update the submit button status
+    updateSubmitButtonStatus();
+
+    // function showPopup() {
+    //     alert("Your request for help has been submitted.");
+    // }
+    
+    </script>
+</body>
+</html>

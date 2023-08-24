@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ray of Hope</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='(helpee)get_help.css') }}">
+</head>
+<body>
+    <h1>Welcome {{ data }}</h1>
+
+    <div class="container">
+    <form method="post" onsubmit="showPopup()">
+        
+        <!-- <h2>Exam Information:</h2> -->
+        <!-- <div style="height: 25px;"></div>
+        <label for="name">Student Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="email">Student Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <div style="height: 20px;"></div>
+        <label for="contact_number">Contact Number:</label>
+        <input type="tel" id="contact_number" name="contact_number" required><br>
+
+        <div style="height: 25px;"></div>
+
+       
+        <div style="height: 20px;"></div>
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="other" required>
+        <label for="other">Other</label><br>
+
+        <div style="height: 20px;"></div>
+
+        <label for="grade_level">Grade Level or Education Level:</label>
+        <select id="grade_level" name="grade_level" required>
+            <option value="">Select Grade Level</option>
+            <option value="elementary">Elementary</option>
+            <option value="middle">Middle School</option>
+            <option value="high">High School</option>
+            <option value="undergrad">Undergraduate</option>
+            <option value="graduate">Graduate</option>
+            <option value="other">Other</option>
+        </select><br>
+        
+        <div style="height: 20px;"></div>
+        <label for="institute_name">Institute Name:</label>
+        <input type="text" id="institute_name" name="institute_name" required><br>
+        <div style="height: 20px;"></div>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required><br>
+        
+       
+        <div style="height: 20px;"></div>
+        <label for="unique_disability_id">Unique Disability ID:</label>
+        <input type="text" id="unique_disability_id" name="unique_disability_id"><br>
+        <div style="height: 20px;"></div>
+  
+        <div style="height: 20px;"></div>
+        <h2>Parent or Guardian Information (if applicable):</h2>
+        <div style="height: 25px;"></div>
+        <label for="parent_name">Parent or Guardian Name:</label>
+        <input type="text" id="parent_name" name="parent_name"><br>
+        <div style="height: 20px;"></div>
+        <label for="parent_contact_number"> Contact Number:</label>
+        <input type="tel" id="parent_contact_number" name="parent_contact_number"><br> -->
+        
+        <div style="height: 20px;"></div>
+        <h2>Exam Details</h2>
+        <div style="height: 25px;"></div>
+        <label for="subject">Exam Subject:</label>
+        <input type="text" id="subject" name="exam_needs_help" required><br>
+        <div style="height: 20px;"></div>
+        <label for="language_medium">Medium of Language:</label>
+        <input type="text" id="language_medium" name="language_medium" required><br>
+        <div style="height: 20px;"></div>
+        <label for="exam_centre">Exam Centre:</label>
+        <input type="text" id="exam_centre" name="location" required><br>
+        <div style="height: 20px;"></div>
+        <label for="exam_date">Exam Date:</label>
+        <input type="date" id="datePicker" id="exam_date" name="exam_date" required><br>
+        <div style="height: 20px;"></div>
+        <label for="exam_time">Exam Start Time:</label>
+        <input type="time" id="exam_time" name="exam_time" required><br>
+        <div style="height: 20px;"></div>
+        <label for="time_duration">Exam End Time:</label>
+        <input type="time" id="time_duration" name="time_duration" required><br>
+<div style="height: 20px;"></div>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+    <script>
+        function showPopup() {
+            alert("Your request for help has been submitted.");
+        }
+    </script>
+    <script>
+  // Get the current date
+  const today = new Date();
+
+  // Get tomorrow's date by adding one day to the current date
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+
+  // Format tomorrow's date as YYYY-MM-DD (required format for the "min" attribute of date input)
+  const formattedTomorrow = tomorrow.toISOString().split('T')[0];
+
+  // Get the date picker element
+  const datePicker = document.getElementById('datePicker');
+
+  // Set the "min" attribute of the date picker to tomorrow's date
+  datePicker.min = formattedTomorrow;
+</script>
+</body>
+</html>

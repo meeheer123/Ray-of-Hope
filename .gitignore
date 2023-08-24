@@ -1,0 +1,3 @@
+blind/
+.env
+flask_session/

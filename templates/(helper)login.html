@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Login for Helper</title>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='login.css') }}"
+		/>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="title-text">
+				<div class="title login">Login For Helper</div>
+				<div class="title signup">Signup Form</div>
+			</div>
+			<div class="form-container">
+				<div class="form-inner">
+					<form method="POST" class="login" onsubmit="return validateForm()">
+						<div class="field">
+							<input
+								type="email"
+								placeholder="Email Address"
+								name="helper_email"
+								required
+								{%
+								if
+								invalid_input
+								%}class="invalid"
+								{%
+								endif
+								%}
+							/>
+						</div>
+						<div class="field">
+							<input
+								type="password"
+								placeholder="Password"
+								name="helper_password"
+								required
+								{%
+								if
+								invalid_input
+								%}class="invalid"
+								{%
+								endif
+								%}
+							/>
+							<span
+								class="show-password-icon"
+								id="showPasswordIcon"
+								onclick="togglePasswordVisibility()"
+								>&#128065;</span
+							>
+						</div>
+						<div
+							class="error-message"
+							id="error-message"
+							{%
+							if
+							invalid_input
+							%}style="color: red;"
+							{%
+							endif
+							%}
+						>
+							{{ error }}
+						</div>
+						<div class="pass-link">
+							<a href="#" id="forgotPasswordLink">Forgot password?</a>
+						</div>
+						<input
+							type="hidden"
+							id="apiKey"
+							value="AIzaSyDbIakxd3dISxi3cAlP4rU9M1RMszuhtAA"
+						/>
+						<div class="field btn">
+							<div class="btn-layer"></div>
+							<input type="submit" value="Login" />
+						</div>
+						<div class="signup-link">
+							Not a member?
+							<a href="{{ url_for('sign_up_helper') }}">Signup now</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script>
+			function validateForm() {
+				// Get the error message element
+				var errorMessage = document.getElementById("error-message");
+
+				// Get the email and password input fields
+				var emailField = document.getElementsByName("helper_email")[0];
+				var passwordField = document.getElementsByName("helper_password")[0];
+
+				// Validate email and password fields
+				if (emailField.value === "") {
+					errorMessage.innerText = "Please enter your email address.";
+					return false;
+				}
+
+				if (passwordField.value === "") {
+					errorMessage.innerText = "Please enter your password.";
+					return false;
+				}
+
+				// If all validation passes, clear any previous error messages and allow form submission
+				errorMessage.innerText = "";
+				return true;
+			}
+
+			function forgotPassword() {
+				var emailField = document.getElementsByName("helper_email")[0].value;
+				var apiKey = document.getElementById("apiKey").value;
+				if (emailField !== "") {
+					fetch("/forgot_password", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + apiKey, // Send the Firebase API key in the request header
+						},
+						body: JSON.stringify({ email: emailField }),
+					})
+						.then(function (response) {
+							if (response.ok) {
+								alert("Password reset email sent. Please check your email.");
+							} else {
+								alert("The mail provided does not exist");
+							}
+						})
+						.catch(function (error) {
+							alert("An error occurred. Please try again later.");
+						});
+				} else {
+					alert(
+						"Please enter your email address before requesting a password reset."
+					);
+				}
+			}
+
+			// Attach the forgotPassword function to the "Forgot password?" link click event
+			var forgotPasswordLink = document.getElementById("forgotPasswordLink");
+			forgotPasswordLink.addEventListener("click", function (event) {
+				event.preventDefault();
+				forgotPassword();
+			});
+
+			function togglePasswordVisibility() {
+				var passwordField = document.getElementsByName("helper_password")[0];
+				var showPasswordIcon = document.getElementById("showPasswordIcon");
+
+				if (passwordField.type === "password") {
+					passwordField.type = "text";
+					showPasswordIcon.innerHTML = "&#128064;"; // Change icon to a crossed-out eye
+				} else {
+					passwordField.type = "password";
+					showPasswordIcon.innerHTML = "&#128065;"; // Change icon back to an open eye
+				}
+			}
+		</script>
+	</body>
+</html>

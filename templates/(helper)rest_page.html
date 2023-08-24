@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Ray of Hope</title>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='(helper)rest_page.css') }}"
+		/>
+	</head>
+	<body>
+		<div class="container">
+			<div class="card-container1">
+				<div class="profile-details">
+					<!-- Add profile details here -->
+					<!-- For example: -->
+					<h2>Profile Details</h2>
+					<p>Name: {{ data.get('name') }}</p>
+					<p>Email: {{ data.get('email') }}</p>
+					<p>Phone: {{ data.get('contact') }}</p>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="container"> -->
+		<!-- <div class="card-container"> -->
+		<!-- <h1 class="heading">You Helping to Students</h1> -->
+		<!-- <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Time Slot</th>
+                    <th>Subject</th>
+                    <th>Location</th>
+                    <th>Contact</th>
+                </tr> -->
+		<!-- {% for helpee in helpees %}
+                {% if not helpee.helper_found %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
+                {% endfor %} -->
+		<!-- </table> -->
+		<!-- </div> -->
+		<!-- </div> -->
+		<div class="container">
+			<div class="card-container">
+				<h1 class="heading">Students Need the Help</h1>
+
+				<table>
+					<tr>
+						<th>Name</th>
+						<th>Date</th>
+						<th>Time Slot</th>
+						<th>Subject</th>
+						<th>Location</th>
+						<th>Contact</th>
+						<th>Help</th>
+					</tr>
+					{% if not exam_info %}
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					{% endif %} {% for info in exam_info %}
+					<tr>
+						<td>{{ info.get('name') }}</td>
+						<td>{{ info.get('exam_date') }}</td>
+						<td>{{ info.get('start_time') }} - {{ info.get('end_time') }}</td>
+						<td>{{ info.get('subject') }}</td>
+						<td>{{ info.get('location') }}</td>
+						<td>{{ info.get('contact') }}</td>
+						<td>
+							<button
+								onclick="onHelpButtonClick(`{{ info.get('_examid') }}`, `{{ info.get('_parentnode') }}`)"
+							>
+								Help
+							</button>
+						</td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+		<script
+			type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+		></script>
+		<script type="text/javascript">
+			(function () {
+				emailjs.init("VzNhQht7buCemMozg");
+			})();
+		</script>
+		<script>
+			 function onHelpButtonClick(examId, parentNode) {
+        fetch("/help_button_clicked", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ examid: examId, parentnode: parentNode }),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("Helpee Name:", data.helpee_name);
+            console.log("Helpee Email:", data.helpee_email);
+            console.log("Helper Name:", data.helper_name);
+            console.log("Helper Email:", data.helper_email);
+
+            var params = {
+                name_helper: data.helper_name,
+                email_helper: data.helper_email,
+                name_helpee: data.helpee_name,
+                email_helpee: data.helpee_email,
+            };
+
+            const serviceID = "service_8lwu5qp";
+            const templateID = "template_lt41fpl";
+
+            emailjs
+                .send(serviceID, templateID, params)
+                .then((res) => {
+                    console.log(res);
+                    alert("Your message sent successfully to helper!!");
+                    location.reload(); // Refresh the page
+                })
+                .catch((err) => console.log(err));
+
+            // Mail to helpee
+            var params1 = {
+                name_helpee: data.helpee_name,
+                email_helpee: data.helpee_email,
+                name_helper: data.helper_name,
+                email_helper: data.helper_email,
+            };
+
+            const serviceID1 = "service_pp1kvwy";
+            const templateID1 = "template_m8pkk12";
+
+            emailjs
+                .send(serviceID1, templateID1, params1)
+                .then((res) => {
+                    console.log(res);
+                    alert("Your message sent successfully to helpee!!");
+                    location.reload(); // Refresh the page
+                })
+                .catch((err) => console.log(err));
+
+        })
+        .catch((error) => {
+            console.log("Failed to click the Help button:", error);
+        });
+    }
+</script>
+	</body>
+</html>

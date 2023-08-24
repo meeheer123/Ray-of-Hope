@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ray of Hope</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='(helpee)rest_page.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card-container1">
+            <div class="profile-details">
+                <!-- Add profile details here -->
+                <h2>Profile Details</h2>
+                <p>Name: {{ data['name'] }}</p>
+                <p>Email: {{ data['email'] }}</p>
+                <p>Phone: {{ data['self_contact'] }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- sends on get_help form -->
+        <a class="help-button" href="{{ url_for('get_help') }}">Help</a>
+    </div >
+    <div class="container">
+        <div class="card-container">
+            <h1 class="heading">Pending Request</h1>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Time Slot</th>
+                    <th>Subject</th>
+                    <th>Location</th>
+                </tr>
+                
+                {% if info %}
+                    {% for i in info %}
+                        {% if not info[i]['helper_found'] %}
+                            <tr>
+                                <td>{{ info[i]['exam_date'] }}</td>
+                                <td>{{ info[i]['start_time'] }} - {{ info[i]['end_time'] }}</td>
+                                <td>{{ info[i]['subject'] }}</td>
+                                <td>{{ info[i]['location'] }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <p>No exams found in the database.</p>
+                {% endif %}
+                
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

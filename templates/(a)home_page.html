@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ray of Hope</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main">
+    <h1>Blind Helper Webapp</h1>
+    <p>Encourage empathy and support for blind students during exams by becoming their writers. Overcoming visual impairment is challenging, and your assistance can be transformative. By providing a guiding hand, you empower them to excel academically and foster inclusivity. Volunteer as a writer through educational institutions or organizations to make a meaningful difference. Let's create an inclusive society that values every individual's potential, regardless of their circumstances. Together, we can brighten their future, ensuring no dream goes unfulfilled. Thank you for being the beacon of hope for our blind students.</p>
+    <div class="buttons">
+        <!-- this is a button which when pressed redirects to the app route sign_in_helpee -->
+    <a href="{{ url_for('sign_in_helpee') }}"><button>Get Help</button></a>
+        <!-- this is a button which when pressed redirects to the app route sign_in_helper -->
+    <a href="{{ url_for('sign_in_helper') }}"><button>Help Others</button></a>
+</div>
+</div>
+</body>
+</html>

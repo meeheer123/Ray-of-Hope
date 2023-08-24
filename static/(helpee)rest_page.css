@@ -1,0 +1,108 @@
+body, html {
+    height: 100vh;
+    margin: 0;
+      flex-direction: column;
+    background:url(cover.webp);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+  }
+  /* Existing CSS styles */
+
+/* Add the following CSS for profile details */
+
+.profile-details {
+    background-color: azure;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-details h2 {
+    margin-bottom: 10px;
+  }
+  
+  .profile-details p {
+    margin: 5px 0;
+  }
+  .card-container1 {
+    width: 80%;
+    height: auto;
+    background-color:transparent;
+    padding: 20px;
+    border-radius: 10px;
+    border:1px solid rgba(225, 195, 195, 0.45);
+    overflow-y: auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    backdrop-filter: blur(5px);
+  }
+  
+  /* Additional CSS for card container */
+  
+  .card-container {
+    width: 80%;
+    height: auto;
+    background-color:#e7e7e7a9;
+    padding: 20px;
+    border-radius: 10px;
+    border:1px solid rgba(225, 195, 195, 0.45);
+    overflow-y: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 6px px rgba(6, 155, 241, 0.746);
+    backdrop-filter: blur(5px);
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:auto;
+  }
+  
+  .heading {
+    margin-bottom: 20px;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    text-align: center;
+    text-shadow: 2px 2px 2px #161515;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+   
+  }
+ 
+  th, td {
+    border-bottom: 1px solid #161515;
+    border-right: 1px solid #161515;
+    /* border: 1px solid #161515; */
+    padding: 8px;
+    text-align: left;
+    margin-bottom: 2px;
+    border-radius: 2px;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  td{
+    background-color: azure;
+  }
+  
+  .help-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(8, 232, 56);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+}
+  .help-button:hover {
+      background-color: rgb(89, 255, 100);
+  }

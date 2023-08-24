@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Others</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='(helper)signup.css') }}">
+</head>
+<body>
+    <h1>Help Others</h1>
+
+    <div class="container">
+        <form method="POST" onsubmit="showPopup()" autocomplete="on">
+            <!-- Student Information section -->
+            <label for="name"> Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="email"> Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <div style="height: 20px;"></div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <div id="password-strength" class="password-strength"></div>
+
+            <div style="height: 20px;"></div>
+            <label for="cpassword">Confirm Password:</label>
+            <input type="password" id="cpassword" name="cpassword" required>
+            <div id="password-match" class="password-strength"></div>
+            <label for="show_password">Show Password:</label>
+    <input type="checkbox" id="show_password_checkbox">
+            <div style="height: 25px;"></div>
+
+            <div style="height: 20px;"></div>
+            <label for="gender">Gender:</label>
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female" required>
+            <label for="female">Female</label>
+            <input type="radio" id="other" name="gender" value="other" required>
+            <label for="other">Other</label><br>
+            <div style="height: 25px;"></div>
+ 
+
+            <div style="height: 20px;"></div>
+
+            <label for="grade_level">Grade Level or Education Level:</label>
+            <select id="grade_level" name="grade_level" required>
+                <option value="">Select Grade Level</option>
+                <option value="elementary">Elementary</option>
+                <option value="middle">Middle School</option>
+                <option value="high">High School</option>
+                <option value="undergrad">Undergraduate</option>
+                <option value="graduate">Graduate</option>
+                <option value="other">Other</option>
+            </select><br>
+
+            <div style="height: 20px;"></div>
+            <label for="institute_name">Institute Name:</label>
+            <input type="text" id="institute_name" name="institute_name" required><br>
+            <div style="height: 20px;"></div>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required><br>
+
+
+            <!-- <div style="height: 20px;"></div>
+            <label for="unique_disability_id">Unique Disability ID:</label>
+            <input type="text" id="unique_disability_id" name="unique_disability_id" required><br> -->
+            <div style="height: 20px;"></div>
+            <label for="contact_number"> Contact Number:</label>
+            <input type="tel" id="contact_number" name="contact_number" pattern="[0-9]{10}" required><br>
+    
+
+            <div style="height: 20px;"></div>
+            <!-- <h2>Parent or Guardian Information (if applicable):</h2>
+            <div style="height: 25px;"></div>
+            <label for="parent_name">Parent or Guardian Name:</label>
+            <input type="text" id="parent_name" name="parent_name"><br>
+            <div style="height: 20px;"></div>
+            <label for="parent_contact_number"> Contact Number:</label>
+            <input type="tel" id="parent_contact_number" name="parent_contact_number"><br> -->
+
+            <div style="height: 20px;"></div>
+            <label for="occupation"> Occupation:</label>
+            <input type="text" id="occupation" name="occupation" required><br>
+            <div style="height: 20px;"></div>
+            <label for="id_proof"> ID Proof (Adhar Card or Pan Card):</label>
+            <select id="id_proof" name="id_proof" required>
+            <option value="adhar">Aadhar Card</option>
+            <option value="pan">Pan Card</option>
+            </select><br>
+            <input type="text" id="id_proof_value" name="id_proof_value" required><br>
+
+            <input type="submit" value="Submit" id="submitButton" disabled>
+        </form>
+    </div>
+    <script>
+     function checkPasswordStrength() {
+    var password = document.getElementById('password').value;
+    var passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&])[A-Za-z\d!@#$%^&]{8,}$/;
+    var passwordStrengthElement = document.getElementById('password-strength');
+
+    if (!passwordPattern.test(password)) {
+        passwordStrengthElement.textContent = "Weak password (must be at least 8 characters long and contain one uppercase, one lowercase, one digit, and one special character)";
+        passwordStrengthElement.style.color = "#FF6347";
+    } else {
+        passwordStrengthElement.textContent = "Strong password";
+        passwordStrengthElement.style.color = "#70df6a";
+    }
+
+    checkConfirmPassword();
+}
+
+
+
+function checkConfirmPassword() {
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('cpassword').value;
+        var passwordMatchElement = document.getElementById('password-match');
+        var submitButton = document.getElementById('submitButton');
+
+        if (password !== confirmPassword) {
+            passwordMatchElement.textContent = "Passwords do not match";
+            passwordMatchElement.style.color = "#FF6347";
+            submitButton.disabled = true;
+        } else {
+            passwordMatchElement.textContent = "Passwords match";
+            passwordMatchElement.style.color = "#70df6a";
+
+            var contactNumber = document.getElementById('contact_number').value;
+            var idProofType = document.getElementById('id_proof').value;
+
+            if (contactNumber.length !== 10) {
+                submitButton.disabled = true;
+            } 
+             else {
+                    submitButton.disabled = false;
+                }
+            
+        }
+
+        updateSubmitButtonStatus();
+    }
+function updateSubmitButtonStatus() {
+    var requiredFields = document.querySelectorAll('input[required], select[required]');
+    var submitButton = document.getElementById('submitButton');
+    var isFormValid = true;
+
+    for (var i = 0; i < requiredFields.length; i++) {
+        if (!requiredFields[i].value.trim()) {
+            isFormValid = false;
+            break;
+        }
+    }
+
+    var passwordMatchElement = document.getElementById('password-match');
+    var passwordMatchText = passwordMatchElement.textContent;
+
+    if (passwordMatchText === "Passwords match") {
+        submitButton.disabled = !isFormValid;
+        submitButton.style.backgroundColor = isFormValid ? "#4caf50" : "#ccc";
+        submitButton.style.cursor = isFormValid ? "pointer" : "not-allowed";
+    } else {
+        submitButton.disabled = true;
+        submitButton.style.backgroundColor = "#ccc";
+        submitButton.style.cursor = "not-allowed";
+    }
+}
+
+ // Function to toggle password visibility
+ document.getElementById('show_password_checkbox').addEventListener('change', function () {
+        var passwordInput = document.getElementById('password');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    });
+
+
+document.getElementById('password').addEventListener('input', checkPasswordStrength);
+document.getElementById('cpassword').addEventListener('input', checkConfirmPassword);
+
+var inputElements = document.querySelectorAll('input, select');
+for (var i = 0; i < inputElements.length; i++) {
+    inputElements[i].addEventListener('input', updateSubmitButtonStatus);
+}
+
+updateSubmitButtonStatus();
+  // Prevent form submission if Aadhar Card value is not 12 digits
+  document.getElementById('submitButton').addEventListener('click', function (event) {
+        var idProofType = document.getElementById('id_proof').value;
+
+        if (idProofType === "adhar") {
+            var idProofValue = document.getElementById('id_proof_value').value;
+
+            if (idProofValue.length !== 12) {
+                event.preventDefault();
+                alert("Aadhar Card should be 12 digits long.");
+            }
+            
+        }
+        else if (idProofType === "pan") {
+            var idProofValue = document.getElementById('id_proof_value').value;
+
+            if (idProofValue.length !== 10) {
+                event.preventDefault();
+                alert("Pan Card should be 10 digits long.");
+            }
+            
+        }
+    });
+    
+function showPopup() {
+    alert("Thank You For Registering.");
+}
+
+    
+    </script>
+</body>
+</html>

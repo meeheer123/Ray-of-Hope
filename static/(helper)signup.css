@@ -1,0 +1,178 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background:  linear-gradient(  
+        rgba(0, 0, 0, 0.45),
+        rgba(225, 195, 195, 0.45)
+        ), url(cover.webp);
+      background-color: rgba(248, 247, 216, 0.7);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+}
+
+h1{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px 1px #000;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.container{
+    width: 80%;
+    height: 80vh;
+    margin: 50px;
+    padding: 20px;
+    align-items: center;
+    /* display: flex;
+    flex-direction: column; */
+    border: 1px solid black;
+    background-color: #fff;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+label{
+  font-family: Arial, Helvetica, sans-serif;
+}
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+   
+  }
+  input[type=email], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+
+/* Media queries for different devices */
+  /* For devices with a width of up to 480 pixels (Mobile Phones) */
+  @media screen and (max-width: 480px) {
+    p {
+      font-size: 14px;
+    }
+    h1 {
+      font-size: 28px;
+    }
+  }
+  
+  /* For devices with a width between 481 pixels and 768 pixels (Tablets) */
+  @media screen and (min-width: 481px) and (max-width: 768px) {
+    p {
+      font-size: 16px;
+    }
+    h1 {
+      font-size: 32px;
+    }
+  }
+  
+  /* For devices with a width between 769 pixels and 1366 pixels (Laptops and Desktops) */
+  @media screen and (min-width: 769px) and (max-width: 1366px) {
+    p {
+      font-size: 18px;
+    }
+    h1 {
+      font-size: 32px;
+    }
+  }
+
+
+  /*To make the page responsive*/
+  
+  /* For devices with a width larger than 1366 pixels (Larger Laptops and Desktops) */
+  @media screen and (min-width: 1367px) {
+    p {
+      font-size: 20px;
+    }
+    h1 {
+      font-size: 40px;
+    }
+  }
+  
+  /* For devices with a high resolution (e.g., Retina displays) */
+  @media screen and (-webkit-min-device-pixel-ratio: 2),
+         screen and (min-resolution: 192dpi) {
+    p {
+      font-size: 20px;
+    }
+    h1 {
+      font-size: 40px;
+    }
+  }
+  
+  /* For devices in landscape orientation */
+  @media screen and (orientation: landscape) {
+    p {
+      font-size: 18px;
+    }
+    h1 {
+      font-size: 36px;
+    }
+  }
+  
+  /* For devices in portrait orientation */
+  @media screen and (orientation: portrait) {
+    p {
+      font-size: 16px;
+    }
+    h1 {
+      font-size: 32px;
+    }
+  }
+
+
+  /* css for the scroll bar */
+  /* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:linear-gradient(#fff,green); 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

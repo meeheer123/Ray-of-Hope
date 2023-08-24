@@ -1,0 +1,139 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main{
+    width: 100%;
+    height: 100vh;
+    background:  linear-gradient(  
+      rgba(0, 0, 0, 0.45),
+      rgba(225, 195, 195, 0.45)
+      ), url(cover.webp);
+    background-color: rgba(248, 247, 216, 0.7);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-between;
+    color: #fff;
+    text-align:center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.main h1{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+ 
+    
+}
+.main p{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+    width: 70%;
+   
+}
+
+button{
+    background-color: #14ff24;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 40px;
+  }
+
+
+/* Styles for all devices */
+p {
+    font-size: 16px;
+    text-shadow: 1px 1px 1px #000;
+  }
+  
+  h1 {
+    font-size: 32px;
+    text-shadow: 2px 2px #000;
+  }
+  
+  /* Media queries for different devices */
+  /* For devices with a width of up to 480 pixels (Mobile Phones) */
+  @media screen and (max-width: 480px) {
+    p {
+      font-size: 14px;
+    }
+    h1 {
+      font-size: 42px;
+    }
+  }
+  
+  /* For devices with a width between 481 pixels and 768 pixels (Tablets) */
+  @media screen and (min-width: 481px) and (max-width: 768px) {
+    p {
+      font-size: 16px;
+    }
+    h1 {
+      font-size: 54px;
+    }
+  }
+  
+  /* For devices with a width between 769 pixels and 1366 pixels (Laptops and Desktops) */
+  @media screen and (min-width: 769px) and (max-width: 1366px) {
+    p {
+      font-size: 18px;
+    }
+    h1 {
+      font-size: 54px;
+    }
+  }
+
+
+  /*To make the page responsive*/
+  
+  /* For devices with a width larger than 1366 pixels (Larger Laptops and Desktops) */
+  @media screen and (min-width: 1367px) {
+    p {
+      font-size: 20px;
+    }
+    h1 {
+      font-size: 60px;
+    }
+  }
+  
+  /* For devices with a high resolution (e.g., Retina displays) */
+  @media screen and (-webkit-min-device-pixel-ratio: 2),
+         screen and (min-resolution: 192dpi) {
+    p {
+      font-size: 20px;
+    }
+    h1 {
+      font-size: 60px;
+    }
+  }
+  
+  /* For devices in landscape orientation */
+  @media screen and (orientation: landscape) {
+    p {
+      font-size: 18px;
+    }
+    h1 {
+      font-size: 54px;
+    }
+  }
+  
+  /* For devices in portrait orientation */
+  @media screen and (orientation: portrait) {
+    p {
+      font-size: 16px;
+    }
+    h1 {
+      font-size: 54px;
+    }
+  }

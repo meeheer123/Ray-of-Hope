@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ray of Hope</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='help_others.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="heading">Helpee Display Page</h1>
+        <div class="card-container">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Exam Needs Help</th>
+                    <th>Time Slot</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                    <th>Contact</th>
+                    <th>Help</th>
+                </tr>
+                {% for helpee in helpees %}
+                {% if not helpee.helper_found %}
+                <tr>
+                    <td>{{ helpee.name }}</td>
+                    <td>{{ helpee.subject }}</td>
+                    <td>{{ helpee.start_time }} - {{ helpee.end_time }}</td>
+                    <td>{{ helpee.location }}</td>
+                    <td>{{ helpee.exam_date }}</td>
+                    <td>{{ helpee.self_contact }}</td>
+                    <td><a class="help-button" href="{{ url_for('helper_form', helpee_id=helpee.udid) }}">Help</a></td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

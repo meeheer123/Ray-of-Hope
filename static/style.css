@@ -1,139 +1,472 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
 }
 
-.main{
+html{
+  scroll-behavior: smooth;
+}
+
+.container1{
+  position: relative;
     width: 100%;
-    height: 100vh;
-    background:  linear-gradient(  
-      rgba(0, 0, 0, 0.45),
-      rgba(225, 195, 195, 0.45)
-      ), url(cover.webp);
-    background-color: rgba(248, 247, 216, 0.7);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
+    display:flex;
     align-items: center;
-    justify-content:space-between;
-    color: #fff;
-    text-align:center;
-    padding: 20px;
-    overflow-y: auto;
+    justify-content: center;
+    /* background:linear-gradient(to right bottom,#011021 50%,#4adef5); */
+    background:#f0f0f0df ;
 }
-
-.main h1{
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 20px;
  
-    
-}
-.main p{
-    font-family: Arial, Helvetica, sans-serif;
-    margin: auto;
-    width: 70%;
-   
+.navbar li{
+    list-style: none;
 }
 
-button{
-    background-color: #14ff24;
-    color: #000;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
+.navbar a{
     text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+    font-size: 1rem;
+  }
+  
+  
+.navbar a:hover{
+    color: #414141;
+    transition: smooth;
+  }
+  
+header{
+    position: absolute;
+    top: 2px;
+    padding: 0 1.8rem;
+     width: 100%;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.091);
+    backdrop-filter: blur(4px);
+    border-radius: 2px;
+    border: grey solid 1px;
+    background:	#F8F8FF;
+  } 
+
+  
+  .navbar{
+    width: 100%;
+    height: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+  }
+  
+  
+  .navbar .logo img{
+    height: 3rem;
+    width: 3rem; 
+  }
+
+  .navbar .links{
+    display: flex;
+    gap: 2rem;
+  }
+  
+  
+  .navbar .toggle_btn{
+    color: #000000a4;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+  
+  }
+  
+  
+  /* 
+  dropdownmenu */
+  .dropdown_menu{
+    position: absolute;
+    right: 2rem;
+    top: 60px;
+    width: 300px;
+    height: 0;
+    background: linear-gradient(135deg,#d5fefd,aqua);
+    backdrop-filter: blur(15px);
+    border-radius:10px;
+    overflow: hidden;
+    display: none;
+    transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .dropdown_menu.open{
+    height: 240px;
+    padding: auto;
+    margin: auto;
+  }
+
+  
+  .dropdown_menu li{
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  
+  /* responsive */
+  @media(max-width:992px)
+  {
+    .navbar .links{
+        display: none;
+    }
+  
+    .navbar .toggle_btn{
+        display: block;
+    }
+  
+    .dropdown_menu{
+        display: block;
+    }
+   
+    
+  }
+  
+  @media(max-width:576px){
+    .dropdown_menu{
+        left: 2rem;
+        width: unset;
+    }
+  
+   
+  
+  }
+  
+    /* navbar css ends here */
+
+/* space for the css of the main body */
+
+.mainbody{
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  background: transparent;
+  color: #000;
+  padding: 100px  0 30px;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.mainrow{
+  width: 85%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.maincol{
+  flex-basis: 25%;
+  padding: 10px;
+}
+
+.maincol:nth-child(1){
+  flex-basis: 45%;
+}
+.maincol p{
+  gap: 2px;
+}
+
+.maincol:nth-child(1) .img_con{
+margin-top: 20px;
+}
+
+.maincol:nth-child(1) img{
+  width: 130px;
+  height:auto ;
+  border-radius:20px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 10px;
+  padding: 20px;
+  margin: 15px;
+}
+
+.maincol:nth-child(1) img:hover{
+  box-shadow: rgba(43, 251, 255, 0.35) 0px 5px 10px;
+  
+}
+.maincol img{
+  width: 350px;
+  height:auto ;
+}
+
+
+
+.maincol h3{
+  margin-bottom: 40px;
+  margin-top: 20px;
+  padding: 10px;
+  gap: 2px;
+  font-size: xx-large;
+  line-height: 30px;
+}
+
+
+
+
+
+/* css for the news card */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* css for the news card */
+
+/* main body css ends here */
+
+    
+/* container2  css is here */
+.container2{
+  position: relative;
+    width: 100%;
+    height:100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(180deg,#f0f0f0df,#d5fefd );   
+}
+/* container2 css ends here */
+/* footer css start here */
+
+
+footer{
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    background: #151517;
+    color: #fff;
+    padding: 100px  0 30px;
+    font-size: 13px;
+    line-height: 20px;
+  }
+  .footrow{
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  
+  .footcol{
+    flex-basis: 25%;
+    padding: 10px;
+  }
+  
+  .footcol:nth-child(3),.footcol:nth-child(2){
+    flex-basis: 15%;
+  }
+  
+  
+  .footcol h3{
+    width: fit-content;
     margin-bottom: 40px;
+    position: relative;
+    font-size: large;
+  }
+  .footcol p{
+    margin: 6px;
+  }
+  .footlogo{
+    
+    height: 120px;
+    width: 120px;
+    margin-bottom: 30px;
+  }
+  
+  
+  .footemail-id{
+    width: fit-content;
+    border-bottom: solid 1px #ccc;
+    margin: 20px 0;
+  }
+  
+  .footcol ul li{
+    list-style: none;
+    margin: 12px;
+  }
+  
+  .footcol ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: medium;
+  }
+  /* .footcol ul li a:hover{
+    color: #03a9f4;
+    font-size:large;
+    
+  } */
+  .social-icons  .fab {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: #000;
+    background: #fff;
+    margin-right: 15px;
+    cursor: pointer;
+  
+  }
+  
+ 
+  
+  footer hr{
+    width: 90%;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    margin: 20px auto;
+  }
+  .footcopyright{
+    text-align: center;
+  
+  }
+
+  .hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color:aqua;
+  }
+  
+  .hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color:aqua;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+    margin-top: 2px;
+  }
+  
+  .hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
   }
 
 
-/* Styles for all devices */
-p {
-    font-size: 16px;
-    text-shadow: 1px 1px 1px #000;
+  .hover-underline {
+    display: inline-block;
+    position: relative;
+    color:#000;
   }
   
-  h1 {
-    font-size: 32px;
-    text-shadow: 2px 2px #000;
+  .hover-underline:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color:#000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+    margin-top: 2px;
   }
   
-  /* Media queries for different devices */
-  /* For devices with a width of up to 480 pixels (Mobile Phones) */
-  @media screen and (max-width: 480px) {
-    p {
-      font-size: 14px;
-    }
-    h1 {
-      font-size: 42px;
-    }
+  .hover-underline:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
   }
   
-  /* For devices with a width between 481 pixels and 768 pixels (Tablets) */
-  @media screen and (min-width: 481px) and (max-width: 768px) {
-    p {
-      font-size: 16px;
-    }
-    h1 {
-      font-size: 54px;
-    }
+  .underline{
+    width: 100%;
+    height: 5px;
+    background:#767676 ;
+    border-radius: 3px;
+    position: absolute;
+    top:25px;
+    left: 0;
+    overflow: hidden;
   }
   
-  /* For devices with a width between 769 pixels and 1366 pixels (Laptops and Desktops) */
-  @media screen and (min-width: 769px) and (max-width: 1366px) {
-    p {
-      font-size: 18px;
+  .underline span{
+    width: 15px;
+    height: 100%;
+    background: #fff;
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    animation: footmoving 2s linear infinite;
+  }
+  
+  
+  @keyframes footmoving{
+    0%{
+        left: -20px;
     }
-    h1 {
-      font-size: 54px;
+  
+    100%{
+        left: 100%;
     }
+  
+  }
+  
+  
+  @media(max-width:700px){
+  footer{
+    bottom: unset;
+  }
+  
+  
+  .footcol{
+    flex-basis: 100%;
+  
+  }
+  
+  .footcol:nth-child(3),.footcol:nth-child(2){
+    flex-basis: 100%;
+  }
+
+  .mainbody{
+    bottom: unset;
+  }
+  
+  .mainrow{
+    flex-direction: column-reverse;
+  }
+  
+  .maincol{
+    flex-basis: 100%;
+  
+  }
+  
+  .maincol:nth-child(3),.maincol:nth-child(2){
+    flex-basis: 100%;
   }
 
 
-  /*To make the page responsive*/
+
   
-  /* For devices with a width larger than 1366 pixels (Larger Laptops and Desktops) */
-  @media screen and (min-width: 1367px) {
-    p {
-      font-size: 20px;
-    }
-    h1 {
-      font-size: 60px;
-    }
   }
   
-  /* For devices with a high resolution (e.g., Retina displays) */
-  @media screen and (-webkit-min-device-pixel-ratio: 2),
-         screen and (min-resolution: 192dpi) {
-    p {
-      font-size: 20px;
-    }
-    h1 {
-      font-size: 60px;
-    }
-  }
+  /* footer css ends here */
   
-  /* For devices in landscape orientation */
-  @media screen and (orientation: landscape) {
-    p {
-      font-size: 18px;
-    }
-    h1 {
-      font-size: 54px;
-    }
-  }
   
-  /* For devices in portrait orientation */
-  @media screen and (orientation: portrait) {
-    p {
-      font-size: 16px;
-    }
-    h1 {
-      font-size: 54px;
-    }
-  }

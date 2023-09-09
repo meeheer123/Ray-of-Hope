@@ -439,6 +439,9 @@ def help_button_clicked():
         db.child("people").child("helpee").child(
             parent_node).child("data").get().val()
     )
+
+    dates = db.child("people").child("helpee").child(parent_node).child("exams").child(exam_id).get().val()
+
     helper_data = (
         db.child("people")
         .child("helper")
@@ -448,12 +451,21 @@ def help_button_clicked():
         .val()
     )
 
+    print(helpee_data)
+
     # Return a JSON response (optional)
     response_data = {
         "helpee_name": helpee_data['name'],
         "helpee_email": helpee_data['email'],
+        "helpee_contact": helpee_data['self_contact'],
         "helper_name": helper_data['name'],
-        "helper_email": helper_data['email']
+        "helper_email": helper_data['email'],
+        "helper_contact": helper_data['contact'],
+        "date": dates['exam_date'],
+        "stime": dates['start_time'],
+        "etime": dates['end_time'],
+        "location":dates['location'],
+        "subject": dates['subject']
     }
 
     # Convert the response data to JSON and return

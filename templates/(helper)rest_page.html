@@ -121,6 +121,13 @@
                 email_helper: data.helper_email,
                 name_helpee: data.helpee_name,
                 email_helpee: data.helpee_email,
+				date: data.date,
+				stime: data.stime,
+				etime: data.etime,
+				location:data.location,
+				subject: data.subject,
+				contact: data.helpee_contact,
+				helper_contact: data.contact
             };
 
             const serviceID = "service_8lwu5qp";
@@ -137,10 +144,17 @@
 
             // Mail to helpee
             var params1 = {
-                name_helpee: data.helpee_name,
-                email_helpee: data.helpee_email,
                 name_helper: data.helper_name,
                 email_helper: data.helper_email,
+                name_helpee: data.helpee_name,
+                email_helpee: data.helpee_email,
+				date: data.date,
+				stime: data.stime,
+				etime: data.etime,
+				location:data.location,
+				subject: data.subject,
+				contact: data.helpee_contact,
+				helper_contact: data.helper_contact,
             };
 
             const serviceID1 = "service_pp1kvwy";

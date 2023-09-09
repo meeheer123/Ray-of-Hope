@@ -1,6 +1,3 @@
 {
-	"files.associations": {
-		"*.ejs": "html",
-		"iostream": "cpp"
-	}
+	"editor.acceptSuggestionOnEnter": "on"
 }

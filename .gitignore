@@ -1,3 +1,4 @@
 blind/
 .env
 flask_session/
+.vscode/

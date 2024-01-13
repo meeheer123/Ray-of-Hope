@@ -14,8 +14,6 @@ from flask import (
 import pyrebase
 from flask_session import Session
 import requests.exceptions
-import ssl
-import smtplib
 from dotenv import load_dotenv
 import os
 from helpers import login_required, apology

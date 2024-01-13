@@ -23,7 +23,7 @@ load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
+app.config["SECRET_KEY"] = "mypythonprogram"
 # Done to make a cookie for the user
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
@@ -31,14 +31,14 @@ Session(app)
 
 # Initialize Firebase config
 firebase_config = {
-    "apiKey": os.getenv("API_KEY"),
-    "authDomain": os.getenv("AUTH_DOMAIN"),
-    "databaseURL": os.getenv("DATABASE_URL"),
-    "projectId": os.getenv("PROJECT_ID"),
-    "storageBucket": os.getenv("STORAGE_BUCKET"),
-    "messagingSenderId": os.getenv("MESSAGING_SENDER_ID"),
-    "appId": os.getenv("APP_ID"),
-    "measurementId": os.getenv("MEASUREMENT_ID"),
+    "apiKey": "AIzaSyDM0okN4H9VGst1WL66xBlZSH3OEw9Gyn4",
+    "authDomain": "ray-of-hope-de54d.firebaseapp.com",
+    "databaseURL": "https://ray-of-hope-de54d-default-rtdb.asia-southeast1.firebasedatabase.app/",
+    "projectId": "ray-of-hope-de54d",
+    "storageBucket": "ray-of-hope-de54d.appspot.com",
+    "messagingSenderId": "813602345553",
+    "appId": "1:813602345553:web:30c7bd249fc95c961f9e70",
+    "measurementId": "G-8CZBDSKF88",
 }
 
 # done to initialize firebase and use its functions
